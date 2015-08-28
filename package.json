@@ -1,7 +1,7 @@
 {
-  "name": "scally",
-  "version": "2.10.0",
-  "description": "Scally is a Sass, BEM, OOCSS, responsive ready, CSS framework that provides you with a solid foundation for building reusable UI's quickly",
+  "name": "cm-scally",
+  "version": "0.0.0",
+  "description": "Campaign Monitor's fork of Scally. Scally is a Sass, BEM, OOCSS, responsive ready, CSS framework that provides you with a solid foundation for building reusable UI's quickly",
   "homepage": "https://github.com/chris-pearce/scally",
   "keywords": [
     "scally",
@@ -14,31 +14,25 @@
   "author": [
     {
       "name":   "Chris Pearce",
-      "email":  "hi@chris-pearce.me",
+      "email":  "chrisp@campaignmonitor.com",
       "url":    "http://chris-pearce.me"
     },
     {
-      "name":   "Kate Levin",
-      "email":  "kllevin@gmail.com",
-      "url":    "http://kllevin.com"
-    },
-    {
-      "name":   "Matt Stow",
-      "email":  "matt@mattstow.com",
-      "url":    "http://mattstow.com"
+      "name":   "David Berner",
+      "email":  "davidb@campaignmonitor.com"
     },
     {
       "name":   "Chris Wright",
-      "email":  "hello@chriswrightdesign.com",
+      "email":  "chrisw@campaignmonitor.com",
       "url":    "http://chriswrightdesign.com"
     }
   ],
   "repository": {
     "type": "git",
-    "url":  "git@github.com:chris-pearce/scally.git"
+    "url":  "git@github.com:campaignmonitor/scally.git"
   },
   "bugs": {
-    "url": "https://github.com/chris-pearce/scally/issues"
+    "url": "https://github.com/campaignmonitor/scally/issues"
   },
   "license": "Apache-2.0"
 }
