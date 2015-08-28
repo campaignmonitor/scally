@@ -48,6 +48,7 @@ We will always get merge conflicts with the following files when rebasing the
 - `package.json`
 - `.version`
 - `README.md`
+- `CHANGELOG.md`
 
 *We should always keep the forked version*—this is very important.
 
@@ -131,7 +132,7 @@ description.
 
 - Updated version number in the `package.json` and `.version` files following
   the [Semantic Versioning guidelines](http://semver.org/).
-- An addition to the [**CHANGELOG-CM.md**](https://github.com/campaignmonitor/scally/blob/working/CHANGELOG-CM.md)
+- An addition to the [**CHANGELOG.md**](https://github.com/campaignmonitor/scally/blob/working/CHANGELOG.md)
   following the format of the main Scally [**CHANGELOG.md**](https://github.com/chris-pearce/scally/blob/master/CHANGELOG.md).
 
 #### Examples and Guidelines
