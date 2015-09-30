@@ -1,4 +1,4 @@
-<img src="https://dl.dropboxusercontent.com/s/anlzedtpekcnla7/logo.png" width="211">
+<img src="https://s3.amazonaws.com/uploads.hipchat.com/22262/1524600/v5mEk1ipcZgcLoK/logo.png" width="211">
 
 [Campaign Monitor's](https://www.campaignmonitor.com/) fork of
 [Scally](https://github.com/chris-pearce/scally). This fork is primarily for
@@ -37,30 +37,53 @@ They're 2 main branches:
 ### master
 
 The **master** branch should never be worked on—it's only for rebasing the main
-Scally version and should always be up to date with it.
+Scally version and should always be up to date with it—steps to do that:
+
+1. `git fetch --all`
+2. `git rebase [scally-remote-name]/master`
+3. `git push origin/master`
+
+`[scally-remote-name]` = the name of the remote pointing to the main Scally
+version, to set this up you do:
+
+```
+git remote add scally-public git@github.com:chris-pearce/scally-website.git
+```
 
 The **master** branch serves as a copy of the main Scally version in case
 anything is to happen to it.
-
-We will always get merge conflicts with the following files when rebasing the
-**master** branch onto the **working** branch:
-
-- `package.json`
-- `.version`
-- `README.md`
-- `CHANGELOG.md`
-
-*We should always keep the forked version*—this is very important.
-
-@chris-pearce will take care of keeping the CM fork in sync with the main
-version and rebasing the **master** branch onto the **working** branch just to
-keep this with one person.
 
 ### working
 
 The **working** branch is the branch we work on—well not directly as all work
 needs to happen on a feature branch which is a branch off the **working**
 branch (see next section).
+
+We will always get merge conflicts with the following files when merging the
+**master** branch into the **working** branch:
+
+- `package.json`
+- `.version`
+- `README.md`
+- `CHANGELOG.md`
+
+We should always keep the **working** branch versions—this is very important.
+
+The steps to merge the **master** branch into the **working** branch and
+bumping the version number:
+
+1. `git fetch --all`
+2. `git merge origin/master`
+3. fix merge conflicts with 4 files listed above then `git add .`
+4. Update the version numbers in the `package.json` and `.version` files
+7. Update the `CHANGELOG.md` file with an entry of "Updating to latest main Scally version and bumping the version"
+8. `git add .`
+9. `git commit -m "Merging main scally and bumping the version number"`
+10. `npm publish`
+
+Chris Pearce will take care of keeping the CM fork in sync with the main
+version and merging the **master** branch into the **working** branch just to
+keep this with one person.
 
 ### Feature branches
 
@@ -97,16 +120,7 @@ Anything that needs to be merged to the **working** branch needs to be
 reviewed via a PR.
 
 All PR's need to point to the **working** branch **NOT** the **master**
-branch! If GitHub is telling you you cannot merge to the **working** branch
-then you'll need to sync up your feature branch with the **working** branch.
-Do this via:
-
-```
-git fetch --all
-git rebase origin/working
-```
-
-Do not use `git merge` or `git pull`!
+branch!
 
 #### PR format
 
@@ -127,13 +141,6 @@ You should also add a comment in the GitHub issue linking to the PR.
 
 If your work doesn't have a GitHub issue then provide a descriptive title and
 description.
-
-#### What your PR should include
-
-- Updated version number in the `package.json` and `.version` files following
-  the [Semantic Versioning guidelines](http://semver.org/).
-- An addition to the [**CHANGELOG.md**](https://github.com/campaignmonitor/scally/blob/working/CHANGELOG.md)
-  following the format of the main Scally [**CHANGELOG.md**](https://github.com/chris-pearce/scally/blob/master/CHANGELOG.md).
 
 #### Examples and Guidelines
 
@@ -201,8 +208,6 @@ the update was done on, following these [guidelines](https://github.com/chris-pe
 
 ## NPM Package
 
-This fork is available as an npm package: [**cm-scally**](https://www.npmjs.com/package/cm-scally)
-so we can easily use Scally in the `createsend.com` app.
+This fork is available as an npm package: [**cm-scally**](https://www.npmjs.com/package/cm-scally) so we can easily use Scally in the CM app's.
 
-We include the npm package in the `createsend.com` app [package.json](https://git.campmon.com/Freshview/createsend.com/blob/master/build/package.json)
-and to get the latest version use `npm update cm-scally`.
+You include the npm package in the app's `package.json` file and to get the latest version use `npm update cm-scally`.
